@@ -38,6 +38,7 @@ export default function Collections() {
 }
 
 function CollectionsGrid({collections}) {
+  console.log(collections);
   return (
     <div className="collections-grid">
       {collections.map((collection, index) => (

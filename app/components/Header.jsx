@@ -1,8 +1,10 @@
-import {Await, NavLink, useMatches} from '@remix-run/react';
+import {Await, NavLink, useLoaderData, useMatches} from '@remix-run/react';
 import {Suspense} from 'react';
+import {HiOutlineShoppingCart} from 'react-icons/hi2';
 
 export function Header({header, isLoggedIn, cart}) {
   const {shop, menu} = header;
+
   return (
     <header className="header">
       <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
@@ -58,7 +60,7 @@ export function HeaderMenu({menu, viewport}) {
             style={activeLinkStyle}
             to={url}
           >
-            {item.title}
+            {item.title === 'all' ? 'Produkty' : item.title}
           </NavLink>
         );
       })}
@@ -71,7 +73,7 @@ function HeaderCtas({isLoggedIn, cart}) {
     <nav className="header-ctas" role="navigation">
       <HeaderMenuMobileToggle />
       <NavLink prefetch="intent" to="/account" style={activeLinkStyle}>
-        {isLoggedIn ? 'Account' : 'Sign in'}
+        {isLoggedIn ? 'Účet' : 'Příhlásit se'}
       </NavLink>
       <SearchToggle />
       <CartToggle cart={cart} />
@@ -88,11 +90,16 @@ function HeaderMenuMobileToggle() {
 }
 
 function SearchToggle() {
-  return <a href="#search-aside">Search</a>;
+  return <a href="#search-aside">Vyhledat</a>;
 }
 
 function CartBadge({count}) {
-  return <a href="#cart-aside">Cart {count}</a>;
+  return (
+    <a href="#cart-aside" className="shop-icon--href">
+      <HiOutlineShoppingCart className="shop-icon" />{' '}
+      <span className="shop-count">{count}</span>
+    </a>
+  );
 }
 
 function CartToggle({cart}) {

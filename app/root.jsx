@@ -15,6 +15,8 @@ import {
 import favicon from '../public/favicon.svg';
 import resetStyles from './styles/reset.css';
 import appStyles from './styles/app.css';
+import homeStyles from './styles/home.css';
+
 import {Layout} from '~/components/Layout';
 import {cssBundleHref} from '@remix-run/css-bundle';
 
@@ -38,6 +40,7 @@ export function links() {
     ...(cssBundleHref ? [{rel: 'stylesheet', href: cssBundleHref}] : []),
     {rel: 'stylesheet', href: resetStyles},
     {rel: 'stylesheet', href: appStyles},
+    {rel: 'stylesheet', href: homeStyles},
     {
       rel: 'preconnect',
       href: 'https://cdn.shopify.com',
@@ -95,6 +98,7 @@ export async function loader({context}) {
 export default function App() {
   const nonce = useNonce();
   const data = useLoaderData();
+  console.log(data);
 
   return (
     <html lang="en">
