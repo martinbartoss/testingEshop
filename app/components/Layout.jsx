@@ -8,10 +8,22 @@ import {
   PredictiveSearchForm,
   PredictiveSearchResults,
 } from '~/components/Search';
+import Wave from 'react-wavify';
 
 export function Layout({cart, children = null, footer, header, isLoggedIn}) {
   return (
     <>
+      <Wave
+        fill="#bbf2db"
+        paused={false}
+        className="wave"
+        options={{
+          height: 10,
+          amplitude: 15,
+          speed: 0.15,
+          points: 3,
+        }}
+      />
       <CartAside cart={cart} />
       <SearchAside />
       <MobileMenuAside menu={header.menu} />

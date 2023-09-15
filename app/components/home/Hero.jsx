@@ -1,5 +1,14 @@
 import {Link} from '@remix-run/react';
 import {Image} from '@shopify/hydrogen-react';
+import Wave from 'react-wavify';
+
+function scrollToSection(sectionId) {
+  const section = document.getElementById(sectionId);
+
+  if (section) {
+    section.scrollIntoView({behavior: 'smooth'});
+  }
+}
 
 function Hero() {
   return (
@@ -21,9 +30,13 @@ function Hero() {
         >
           Chci Manu!
         </Link>
-        <a className="button secondary" href="#about">
+        <button
+          className="button secondary"
+          href="#about"
+          onClick={() => scrollToSection('about')}
+        >
           Co je Mana?
-        </a>
+        </button>
       </div>
     </section>
   );

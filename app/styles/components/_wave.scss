@@ -1,0 +1,13 @@
+.wave {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  height: 6rem;
+
+  transform: rotate(-180deg);
+
+  z-index: 1;
+
+  opacity: 0.6;
+}

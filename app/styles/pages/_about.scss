@@ -1,0 +1,42 @@
+/* ABOUT */
+.about {
+  height: 45rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20rem;
+}
+
+.about h3 {
+  font-size: 2.4rem;
+  color: rgb(90, 247, 195);
+}
+
+.about__container {
+  width: 50%;
+  height: 60%;
+}
+
+.about__image-container {
+  position: relative;
+  width: 50%;
+  height: 100%;
+}
+
+.about__image {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  width: 10rem;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+.about__image:first-of-type {
+  left: 20%;
+  top: 50%;
+}
+
+.about__image:last-of-type {
+  left: 80%;
+  top: 50%;
+} /*# sourceMappingURL=home.css.map */

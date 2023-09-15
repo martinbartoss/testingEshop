@@ -1,5 +1,6 @@
 // Virtual entry point for the app
-import * as remixBuild from '@remix-run/dev/server-build';
+const remixBuild = require('@remix-run/dev/server-build');
+
 import {
   cartGetIdDefault,
   cartSetIdDefault,

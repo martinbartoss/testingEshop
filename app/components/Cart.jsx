@@ -7,7 +7,7 @@ export function CartMain({layout, cart}) {
   const withDiscount =
     cart &&
     Boolean(cart.discountCodes.filter((code) => code.applicable).length);
-  const className = `cart-main ${withDiscount ? 'with-discount' : ''}`;
+  const className = `cart__main ${withDiscount ? 'with-discount' : ''}`;
 
   return (
     <div className={className}>
@@ -21,7 +21,7 @@ function CartDetails({layout, cart}) {
   const cartHasItems = !!cart && cart.totalQuantity > 0;
 
   return (
-    <div className="cart-details">
+    <div className="cart__details">
       <CartLines lines={cart?.lines} layout={layout} />
       {cartHasItems && (
         <CartSummary cost={cart.cost} layout={layout}>
@@ -53,7 +53,7 @@ function CartLineItem({layout, line}) {
   const lineItemUrl = useVariantUrl(product.handle, selectedOptions);
 
   return (
-    <li key={id} className="cart-line">
+    <li key={id} className="cart__line">
       {image && (
         <Image
           alt={title}
@@ -111,12 +111,12 @@ function CartCheckoutActions({checkoutUrl}) {
 
 export function CartSummary({cost, layout, children = null}) {
   const className =
-    layout === 'page' ? 'cart-summary-page' : 'cart-summary-aside';
+    layout === 'page' ? 'cart__summary-page' : 'cart__summary-aside';
 
   return (
     <div aria-labelledby="cart-summary" className={className}>
       <h4>Totals</h4>
-      <dl className="cart-subtotal">
+      <dl className="cart__subtotal">
         <dt>Subtotal</dt>
         <dd>
           {cost?.subtotalAmount?.amount ? (
@@ -138,7 +138,9 @@ function CartLineRemoveButton({lineIds}) {
       action={CartForm.ACTIONS.LinesRemove}
       inputs={{lineIds}}
     >
-      <button type="submit">Remove</button>
+      <button type="submit" className="cart__remove-item">
+        Odstranit
+      </button>
     </CartForm>
   );
 }
@@ -150,7 +152,7 @@ function CartLineQuantity({line}) {
   const nextQuantity = Number((quantity + 1).toFixed(0));
 
   return (
-    <div className="cart-line-quantiy">
+    <div className="cart__line--quantiy">
       <small>Quantity: {quantity} &nbsp;&nbsp;</small>
       <CartLineUpdateButton lines={[{id: lineId, quantity: prevQuantity}]}>
         <button
@@ -233,7 +235,7 @@ function CartDiscounts({discountCodes}) {
         <div>
           <dt>Discount(s)</dt>
           <UpdateDiscountForm>
-            <div className="cart-discount">
+            <div className="cart__discount">
               <code>{codes?.join(', ')}</code>
               &nbsp;
               <button>Remove</button>

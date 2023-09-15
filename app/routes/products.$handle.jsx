@@ -39,7 +39,7 @@ export async function loader({params, request, context}) {
   });
 
   if (!product?.id) {
-    throw new Response(null, {status: 404});
+    throw new Response('Product not found', {status: 404});
   }
 
   const firstVariant = product.variants.nodes[0];
@@ -111,10 +111,10 @@ function ProductImage({image}) {
     <div className="product-image">
       <Image
         alt={image.altText || 'Product Image'}
-        aspectRatio="1/1"
         data={image}
         key={image.id}
         sizes="(min-width: 45em) 50vw, 100vw"
+        aspectRatio="auto"
       />
     </div>
   );
@@ -209,7 +209,7 @@ function ProductForm({product, selectedVariant, variants}) {
             : []
         }
       >
-        {selectedVariant?.availableForSale ? 'Add to cart' : 'Sold out'}
+        {selectedVariant?.availableForSale ? 'Přidat do košíku' : 'Vyprodáno'}
       </AddToCartButton>
     </div>
   );
@@ -258,6 +258,7 @@ function AddToCartButton({analytics, children, disabled, lines, onClick}) {
             type="submit"
             onClick={onClick}
             disabled={disabled ?? fetcher.state !== 'idle'}
+            className="product-form__button--add"
           >
             {children}
           </button>

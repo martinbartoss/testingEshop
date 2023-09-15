@@ -97,7 +97,7 @@ function CartBadge({count}) {
   return (
     <a href="#cart-aside" className="shop-icon--href">
       <HiOutlineShoppingCart className="shop-icon" />{' '}
-      <span className="shop-count">{count}</span>
+      {count > 0 && <span className="shop-count">{count}</span>}
     </a>
   );
 }
